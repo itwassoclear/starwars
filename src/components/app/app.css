@@ -1,8 +1,14 @@
 .stardb-app {
-  padding: 10px 40px;
+  padding: 10px 0;
+  max-width: 1040px;
+  margin: 0 auto;
 }
 
 .button-row {
   margin: 0;
   margin-bottom: 2rem;
+}
+
+.toggle-planet {
+  margin-right: 15px;
 }
