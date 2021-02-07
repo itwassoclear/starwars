@@ -1,41 +1,43 @@
 import React, { Component } from "react";
-// import SwapiService from "../../services/SwapiService";
+import SwapiService from "../../services/swapi-service";
 import "./item-list.css";
-// import Spinner from "../spinner";
+import Spinner from "../spinner/spinner";
 
 export default class ItemList extends Component {
-  // swapiService = new SwapiService();
-  // state = {
-  //   itemList: null,
-  // };
+  swapiService = new SwapiService();
+  state = {
+    peopleList: null,
+    itemList: null,
+  };
 
-  // componentDidMount() {
-  //   const { getData } = this.props;
+  componentDidMount() {
+    //   const { getData } = this.props;
 
-  //   getData().then((itemList) =>
-  //     this.setState({
-  //       itemList,
-  //     })
-  //   );
-  //   // this.swapiService.getAllPeople().then((itemList) =>
-  //   //   this.setState({
-  //   //     itemList,
-  //   //   })
-  //   // );
-  // }
+    //   getData().then((itemList) =>
+    //     this.setState({
+    //       itemList,
+    //     })
+    //   );
+    this.swapiService.getAllPeople().then((peopleList) => {
+      this.setState({ peopleList });
+    });
+  }
 
-  // renderItems(arr) {
-  //   return arr.map((item) => {
-  //     const { id } = item;
-  //     const label = this.props.renderItem(item);
-  //     // const label = this.props.children(item);
-  //     return (
-  //       <li key={id} className="list-group-item" onClick={() => this.props.onItemSelected(id)}>
-  //         {label}
-  //       </li>
-  //     );
-  //   });
-  // }
+  onItemSelected() {}
+
+  renderItems(arr) {
+    return arr.map((person) => {
+      const { id, name } = person;
+      // const label = this.props.renderItem(person);
+      // const label = this.props.children(item);
+      return (
+        <li key={id} className="list-group-item" onClick={() => this.props.onItemSelected(id)}>
+          {name}
+        </li>
+      );
+    });
+  }
+
   // const items = itemList.map((people) => {
   //   return (
   //     <li key={people.id} className="list-group-item">
@@ -45,18 +47,13 @@ export default class ItemList extends Component {
   // });
 
   render() {
-    // const { itemList } = this.state;
+    const { peopleList } = this.state;
 
-    // if (!itemList) {
-    //   // return <Spinner />;
-    // }
-    // const items = this.renderItems(itemList);
+    if (!peopleList) {
+      return <Spinner />;
+    }
+    const items = this.renderItems(peopleList);
 
-    // return <ul className="item-list list-group">{items}</ul>;
-    return (
-      <ul>
-        <li>Luke</li>
-      </ul>
-    );
+    return <ul className="item-list list-group">{items}</ul>;
   }
 }

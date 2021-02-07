@@ -1,9 +1,9 @@
 .error-indicator {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 10px auto 0;
   text-align: center;
-  color: #b8bc00;
+  color: #BD842E;
   font-weight: 500;
 }
 
@@ -11,4 +11,5 @@
   width: 64px;
   height: 64px;
   margin: 0 auto 15px;
+  opacity: .8;
 }

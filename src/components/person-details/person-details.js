@@ -7,14 +7,17 @@ export default class PersonDetails extends Component {
   state = {
     person: null,
   };
+
   componentDidMount() {
     this.updatePerson();
   }
+
   componentDidUpdate(prevProps) {
     if (this.props.personId !== prevProps.personId) {
       this.updatePerson();
     }
   }
+
   updatePerson() {
     const { personId } = this.props;
     if (!personId) {
@@ -25,9 +28,8 @@ export default class PersonDetails extends Component {
 
   render() {
     if (!this.state.person) {
-      return <span>Please, select a person from the list</span>;
+      return <span className="select-person-title">Please, select a person from the list</span>;
     }
-    // console.log("this.state.person", this.state.person);
     const { id, name, gender, birthYear, eyeColor } = this.state.person;
     return (
       <div className="person-details card">
