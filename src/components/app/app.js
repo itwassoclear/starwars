@@ -5,8 +5,17 @@ import RandomPlanet from "../random-planet/index";
 
 import "./app.css";
 import SwapiService from "../../services/swapi-service";
+import {
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails,
+  PersonList,
+  PlanetList,
+  StarshipList,
+} from "../sw-components/";
 import ErrorButton from "../error-button/error-button";
 import ErrorIndicator from "../error-indicator/error-indicator";
+import ErrorBoundry from "../error-boundry/error-boundry";
 import ItemDetails, {
   Record,
 } from "../item-details/item-details";
@@ -50,51 +59,52 @@ export default class App extends Component {
       getStarshipImage,
     } = this.swapiService;
 
-    const personDetails = (
-      <ItemDetails
-        itemId={11}
-        getData={getPerson}
-        getImageUrl={getPersonImage}
-      >
-        <Record field="gender" label="Gender" />
-        <Record
-          field="eyeColor"
-          label="Eye color"
-        />
-      </ItemDetails>
-    );
+    // const personDetails = (
+    //   <ItemDetails
+    //     itemId={11}
+    //     getData={getPerson}
+    //     getImageUrl={getPersonImage}
+    //   >
+    //     <Record field="gender" label="Gender" />
+    //     <Record
+    //       field="eyeColor"
+    //       label="Eye color"
+    //     />
+    //   </ItemDetails>
+    // );
 
-    const starshipDetails = (
-      <ItemDetails
-        itemId={5}
-        getData={getStarship}
-        getImageUrl={getStarshipImage}
-      >
-        <Record field="model" label="Model" />
-        <Record field="length" label="Length" />
-        <Record
-          field="costInCredits"
-          label="Cost"
-        />
-      </ItemDetails>
-    );
+    // const starshipDetails = (
+    //   <ItemDetails
+    //     itemId={5}
+    //     getData={getStarship}
+    //     getImageUrl={getStarshipImage}
+    //   >
+    //     <Record field="model" label="Model" />
+    //     <Record field="length" label="Length" />
+    //     <Record
+    //       field="costInCredits"
+    //       label="Cost"
+    //     />
+    //   </ItemDetails>
+    // );
 
     return (
-      <div className="stardb-app">
-        <Header />
-        {planet}
+      <ErrorBoundry>
+        <div className="stardb-app">
+          <Header />
+          {/* {planet} */}
 
-        <div className="row mb2 button-row">
-          <button
-            className="toggle-planet btn btn-warning btn-lg"
-            onClick={this.toggleRandomPlanet}
-          >
-            Toggle Random Planet
-          </button>
-          <ErrorButton />
-        </div>
+          {/* <div className="row mb2 button-row">
+            <button
+              className="toggle-planet btn btn-warning btn-lg"
+              onClick={this.toggleRandomPlanet}
+            >
+              Toggle Random Planet
+            </button>
+            <ErrorButton />
+          </div> */}
 
-        {/* <PeoplePage />
+          {/* <PeoplePage />
 
         <div className="row mb2 row-block">
           <div className="col-md-6">
@@ -113,12 +123,20 @@ export default class App extends Component {
             <ItemDetails personId={this.state.selectedPerson} />
           </div>
         </div> */}
+          <PersonDetails itemId={11} />
+          <PlanetDetails itemId={5} />
+          <StarshipDetails itemId={9} />
 
-        <Row
-          left={personDetails}
-          right={starshipDetails}
-        />
-      </div>
+          <PersonList />
+          <StarshipList />
+          <PlanetList />
+
+          {/* <Row
+            left={personDetails}
+            right={starshipDetails}
+          /> */}
+        </div>
+      </ErrorBoundry>
     );
   }
 }

@@ -57,13 +57,7 @@ export default class ItemDetails extends Component {
         </span>
       );
     }
-    const {
-      id,
-      name,
-      gender,
-      birthYear,
-      eyeColor,
-    } = item;
+    const { id, name } = item;
     return (
       <div className="item-details card">
         <img
