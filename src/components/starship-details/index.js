@@ -1,3 +1,3 @@
-import StarshipDetails from "./StarshipDetails";
+// import StarshipDetails from "./StarshipDetails";
 
-export default StarshipDetails;
+// export default StarshipDetails;
